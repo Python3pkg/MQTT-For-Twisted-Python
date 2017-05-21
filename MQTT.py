@@ -60,7 +60,7 @@ class MQTTProtocol(Protocol):
             retain = (packet[0] & 0x01) == 0x01
         except:
             # Invalid packet type, throw away this packet
-            print "Invalid packet type %x" % packet_type
+            print("Invalid packet type %x" % packet_type)
             return
 
         # Strip the fixed header
@@ -77,7 +77,7 @@ class MQTTProtocol(Protocol):
             packetHandler(packet, qos, dup, retain)
         else:
             # Rocks fall, everyone dies
-            print "Invalid packet handler for %s" % packet_type_name
+            print("Invalid packet handler for %s" % packet_type_name)
             return
 
     def _event_connect(self, packet, qos, dup, retain):
